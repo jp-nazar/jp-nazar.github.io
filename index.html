@@ -267,6 +267,48 @@
       text-decoration: none;
     }
 
+    .terminal-prompt {
+      display: inline-flex;
+      align-items: center;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .terminal-prompt .ps1 {
+      color: var(--accent);
+      margin-right: 6px;
+      user-select: none;
+    }
+
+    .terminal-link {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.15s, text-shadow 0.15s;
+    }
+
+    .terminal-link:hover {
+      color: #fff;
+      text-shadow: 0 0 6px var(--accent);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .terminal-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1em;
+      background: var(--accent);
+      margin-left: 1px;
+      vertical-align: text-bottom;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
     /* ── Lang toggle ── */
     .lang-btn {
       position: fixed;
@@ -436,7 +478,9 @@
     </section>
 
     <footer>
-      <p><a href="https://github.com/jp-nazar" target="_blank" rel="noopener">github.com/jp-nazar</a></p>
+      <p class="terminal-prompt">
+        <span class="ps1">$</span><a id="terminal-text" href="https://github.com/jp-nazar" target="_blank" rel="noopener" class="terminal-link"></a><span class="terminal-cursor"></span>
+      </p>
     </footer>
 
   </div>
@@ -526,6 +570,49 @@
     function toggleLang() { setLang(currentLang === 'en' ? 'es' : 'en'); }
 
     setLang(currentLang);
+
+    (function() {
+      var el = document.getElementById('terminal-text');
+      var items = [
+        { text: 'github.com/jp-nazar',     href: 'https://github.com/jp-nazar' },
+        { text: 'linkedin.com/in/jpnazar', href: 'https://cl.linkedin.com/in/jpnazar' },
+        { text: 'jp.nazar@gmail.com',      href: 'mailto:jp.nazar@gmail.com' }
+      ];
+      var typeDelay   = 80;
+      var deleteDelay = 40;
+      var pauseFull   = 5000;
+      var pauseEmpty  = 400;
+      var idx = 0;
+      var i = 0;
+      var deleting = false;
+
+      function tick() {
+        var item = items[idx];
+        el.textContent = item.text.slice(0, i);
+        if (!deleting) {
+          if (i < item.text.length) {
+            i++;
+            setTimeout(tick, typeDelay);
+          } else {
+            deleting = true;
+            setTimeout(tick, pauseFull);
+          }
+        } else {
+          if (i > 0) {
+            i--;
+            setTimeout(tick, deleteDelay);
+          } else {
+            deleting = false;
+            idx = (idx + 1) % items.length;
+            el.href = items[idx].href;
+            setTimeout(tick, pauseEmpty);
+          }
+        }
+      }
+
+      el.href = items[0].href;
+      tick();
+    })();
   </script>
 </body>
 </html>

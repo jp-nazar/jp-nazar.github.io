@@ -27,6 +27,26 @@ sources/     ← PDFs and reference markdown, not served
 
 No `_config.yml`, no `_layouts/`, no `Gemfile`. Pure static HTML.
 
+## Internationalization (i18n)
+
+Inline JS at bottom of `<body>`. No external files, no fetch.
+
+- **Languages**: English (default), Spanish
+- **Toggle**: fixed pill button top-right corner (`#lang-toggle`), shows target lang (ES/EN)
+- **Persistence**: `localStorage` key `lang`
+- **Mechanism**: `data-i18n="key"` attributes on translatable elements; `setLang(lang)` swaps `textContent` for all matches
+- **Translations object**: inline `const translations = { en: {...}, es: {...} }` — all keys listed there
+
+### Adding/editing translations
+
+1. Find element in HTML, check its `data-i18n` key
+2. Edit both `translations.en[key]` and `translations.es[key]` in the `<script>` block
+3. To add a new translatable element: add `data-i18n="newkey"` to element, add key to both lang objects
+
+### What is NOT translated
+
+Proper nouns, URLs, tech brand names (React, Node.js, AWS…), company names, email, GitHub/LinkedIn handles.
+
 ## CSS architecture
 
 CSS custom properties in `:root`:
@@ -40,6 +60,7 @@ Key classes:
 - `.header-inner` — flex row: avatar + name/tagline
 - `.avatar` — 80px circular headshot
 - `.links a` — pill-shaped nav links (email, GitHub, LinkedIn)
+- `.lang-btn` — fixed top-right lang toggle button (`#lang-toggle`)
 - `.job` / `.job.current` — timeline entry (left border + dot); current job uses accent border
 - `.pill` / `.pill.accent` — skill tags
 - `.extras-list` — bulleted list with accent `▸` markers
