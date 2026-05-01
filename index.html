@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Juan Pablo Nazar — Software Engineer</title>
+  <title data-i18n="title">Juan Pablo Nazar — Software Engineer</title>
 
   <!-- SEO -->
   <meta name="description" content="Juan Pablo Nazar — Full-stack JavaScript engineer and Tech Lead with 10+ years building high-performance web apps. Based in Concepción, Chile." />
@@ -267,6 +267,25 @@
       text-decoration: none;
     }
 
+    /* ── Lang toggle ── */
+    .lang-btn {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 100;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      font-family: inherit;
+      line-height: 1;
+    }
+    .lang-btn:hover { color: var(--accent); border-color: var(--accent); }
+
     /* ── Responsive ── */
     @media (max-width: 480px) {
       .header-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
@@ -277,6 +296,7 @@
   </style>
 </head>
 <body>
+  <button id="lang-toggle" class="lang-btn" onclick="toggleLang()">ES</button>
   <div class="container">
 
     <header>
@@ -284,7 +304,7 @@
         <img src="avatar.jpg" alt="Juan Pablo Nazar" class="avatar" />
         <div class="header-text">
           <h1>Juan Pablo <span>Nazar</span></h1>
-          <p class="tagline">Software Engineer &amp; Tech Lead · Full-Stack JavaScript · Concepción, Chile</p>
+          <p class="tagline" data-i18n="tagline">Software Engineer &amp; Tech Lead · Full-Stack JavaScript · Concepción, Chile</p>
         </div>
       </div>
       <nav class="links">
@@ -304,16 +324,16 @@
     </header>
 
     <section class="about">
-      <h2>About</h2>
-      <p>
+      <h2 data-i18n="nav.about">About</h2>
+      <p data-i18n="about.body">
         Full-stack JavaScript engineer with 10+ years building high-performance web applications — from OTT streaming platforms to cloud-based document editors. Currently leading engineering and client work at Improving Latam, embedded at ICE Mortgage Technology. Enthusiastic about technology, driven by solving hard problems, and always curious about what's next.
       </p>
     </section>
 
     <section class="skills">
-      <h2>Skills</h2>
+      <h2 data-i18n="nav.skills">Skills</h2>
       <div class="skill-group">
-        <div class="skill-group-label">Frontend</div>
+        <div class="skill-group-label" data-i18n="skills.frontend">Frontend</div>
         <div class="pills">
           <span class="pill accent">React</span>
           <span class="pill accent">Next.js</span>
@@ -328,7 +348,7 @@
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-label">Backend &amp; Database</div>
+        <div class="skill-group-label" data-i18n="skills.backend">Backend &amp; Database</div>
         <div class="pills">
           <span class="pill accent">Node.js</span>
           <span class="pill accent">Express</span>
@@ -340,7 +360,7 @@
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-label">Infrastructure &amp; Deployment</div>
+        <div class="skill-group-label" data-i18n="skills.infra">Infrastructure &amp; Deployment</div>
         <div class="pills">
           <span class="pill">AWS</span>
           <span class="pill">Vercel</span>
@@ -350,7 +370,7 @@
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-label">Testing</div>
+        <div class="skill-group-label" data-i18n="skills.testing">Testing</div>
         <div class="pills">
           <span class="pill accent">Selenium</span>
           <span class="pill accent">BrowserStack</span>
@@ -362,56 +382,56 @@
     </section>
 
     <section class="experience">
-      <h2>Experience</h2>
+      <h2 data-i18n="nav.experience">Experience</h2>
 
       <div class="job current">
-        <div class="job-role">Software Engineer · Tech Lead · Account Manager</div>
+        <div class="job-role" data-i18n="job1.role">Software Engineer · Tech Lead · Account Manager</div>
         <div class="job-company">Improving (formerly Lenio Labs)</div>
-        <div class="job-date">2018 – Present</div>
+        <div class="job-date" data-i18n="job1.date">2018 – Present</div>
         <ul class="job-desc">
-          <li>Embedded at ICE Mortgage Technology — building cloud document editor tooling.</li>
-          <li>Leading technical direction and mentoring engineers as Tech Lead.</li>
-          <li>Managing client relationships and delivery as Account Manager for Improving Latam.</li>
+          <li data-i18n="job1.desc1">Embedded at ICE Mortgage Technology — building cloud document editor tooling.</li>
+          <li data-i18n="job1.desc2">Leading technical direction and mentoring engineers as Tech Lead.</li>
+          <li data-i18n="job1.desc3">Managing client relationships and delivery as Account Manager for Improving Latam.</li>
         </ul>
       </div>
 
       <div class="job">
-        <div class="job-role">Full-Stack Engineer</div>
+        <div class="job-role" data-i18n="job2.role">Full-Stack Engineer</div>
         <div class="job-company">Mediastream</div>
-        <div class="job-date">2016 – 2018</div>
+        <div class="job-date" data-i18n="job2.date">2016 – 2018</div>
         <ul class="job-desc">
-          <li>Built OTT and streaming web applications for major media brands.</li>
-          <li>Clients included Cartoon Network, TVN, Canal 13, and WinSports.</li>
-          <li>Delivered high-availability video platforms on React / Node / AWS stacks.</li>
+          <li data-i18n="job2.desc1">Built OTT and streaming web applications for major media brands.</li>
+          <li data-i18n="job2.desc2">Clients included Cartoon Network, TVN, Canal 13, and WinSports.</li>
+          <li data-i18n="job2.desc3">Delivered high-availability video platforms on React / Node / AWS stacks.</li>
         </ul>
       </div>
 
       <div class="job">
-        <div class="job-role">Co-Founder &amp; CTO</div>
+        <div class="job-role" data-i18n="job3.role">Co-Founder &amp; CTO</div>
         <div class="job-company">Fabricamos</div>
-        <div class="job-date">Jan 2015 – Feb 2016</div>
+        <div class="job-date" data-i18n="job3.date">Jan 2015 – Feb 2016</div>
         <ul class="job-desc">
-          <li>Co-founded a design, construction, and prototyping startup.</li>
-          <li>Handled IT infrastructure, operations, and product development.</li>
-          <li>Recognized by SERCOTEC Capital Semilla Emprende and Startup Weekend.</li>
+          <li data-i18n="job3.desc1">Co-founded a design, construction, and prototyping startup.</li>
+          <li data-i18n="job3.desc2">Handled IT infrastructure, operations, and product development.</li>
+          <li data-i18n="job3.desc3">Recognized by SERCOTEC Capital Semilla Emprende and Startup Weekend.</li>
         </ul>
       </div>
     </section>
 
     <section class="education">
-      <h2>Education</h2>
+      <h2 data-i18n="nav.education">Education</h2>
       <div>
-        <div class="edu-degree">Ingeniería Civil Informática</div>
+        <div class="edu-degree" data-i18n="edu.degree">Ingeniería Civil Informática</div>
         <div class="edu-school">Universidad San Sebastián</div>
       </div>
     </section>
 
     <section class="extras">
-      <h2>Highlights</h2>
+      <h2 data-i18n="nav.highlights">Highlights</h2>
       <ul class="extras-list">
-        <li>Accessibility &amp; ADA compliance — trained and applied in production apps</li>
-        <li>SERCOTEC Capital Semilla Emprende — startup grant recipient</li>
-        <li>Startup Weekend &amp; The Hack Way — participant</li>
+        <li data-i18n="highlight.ada">Accessibility &amp; ADA compliance — trained and applied in production apps</li>
+        <li data-i18n="highlight.sercotec">SERCOTEC Capital Semilla Emprende — startup grant recipient</li>
+        <li data-i18n="highlight.sw">Startup Weekend &amp; The Hack Way — participant</li>
       </ul>
     </section>
 
@@ -420,5 +440,92 @@
     </footer>
 
   </div>
+  <script>
+    const translations = {
+      en: {
+        title: "Juan Pablo Nazar — Software Engineer",
+        tagline: "Software Engineer & Tech Lead · Full-Stack JavaScript · Concepción, Chile",
+        "nav.about": "About",
+        "nav.skills": "Skills",
+        "nav.experience": "Experience",
+        "nav.education": "Education",
+        "nav.highlights": "Highlights",
+        "about.body": "Full-stack JavaScript engineer with 10+ years building high-performance web applications — from OTT streaming platforms to cloud-based document editors. Currently leading engineering and client work at Improving Latam, embedded at ICE Mortgage Technology. Enthusiastic about technology, driven by solving hard problems, and always curious about what’s next.",
+        "skills.frontend": "Frontend",
+        "skills.backend": "Backend & Database",
+        "skills.infra": "Infrastructure & Deployment",
+        "skills.testing": "Testing",
+        "job1.role": "Software Engineer · Tech Lead · Account Manager",
+        "job1.date": "2018 – Present",
+        "job1.desc1": "Embedded at ICE Mortgage Technology — building cloud document editor tooling.",
+        "job1.desc2": "Leading technical direction and mentoring engineers as Tech Lead.",
+        "job1.desc3": "Managing client relationships and delivery as Account Manager for Improving Latam.",
+        "job2.role": "Full-Stack Engineer",
+        "job2.date": "2016 – 2018",
+        "job2.desc1": "Built OTT and streaming web applications for major media brands.",
+        "job2.desc2": "Clients included Cartoon Network, TVN, Canal 13, and WinSports.",
+        "job2.desc3": "Delivered high-availability video platforms on React / Node / AWS stacks.",
+        "job3.role": "Co-Founder & CTO",
+        "job3.date": "Jan 2015 – Feb 2016",
+        "job3.desc1": "Co-founded a design, construction, and prototyping startup.",
+        "job3.desc2": "Handled IT infrastructure, operations, and product development.",
+        "job3.desc3": "Recognized by SERCOTEC Capital Semilla Emprende and Startup Weekend.",
+        "edu.degree": "Ingeniería Civil Informática",
+        "highlight.ada": "Accessibility & ADA compliance — trained and applied in production apps",
+        "highlight.sercotec": "SERCOTEC Capital Semilla Emprende — startup grant recipient",
+        "highlight.sw": "Startup Weekend & The Hack Way — participant"
+      },
+      es: {
+        title: "Juan Pablo Nazar — Ingeniero de Software",
+        tagline: "Ingeniero de Software & Tech Lead · JavaScript Full-Stack · Concepción, Chile",
+        "nav.about": "Sobre mí",
+        "nav.skills": "Habilidades",
+        "nav.experience": "Experiencia",
+        "nav.education": "Educación",
+        "nav.highlights": "Logros",
+        "about.body": "Ingeniero JavaScript full-stack con más de 10 años construyendo aplicaciones web de alto rendimiento — desde plataformas de streaming OTT hasta editores de documentos en la nube. Actualmente liderando ingeniería y trabajo con clientes en Improving Latam, integrado en ICE Mortgage Technology. Apasionado por la tecnología, motivado por resolver problemas complejos y siempre curioso sobre lo que viene.",
+        "skills.frontend": "Frontend",
+        "skills.backend": "Backend y Base de Datos",
+        "skills.infra": "Infraestructura y Despliegue",
+        "skills.testing": "Testing",
+        "job1.role": "Ingeniero de Software · Tech Lead · Account Manager",
+        "job1.date": "2018 – Presente",
+        "job1.desc1": "Integrado en ICE Mortgage Technology — construyendo herramientas de edición de documentos en la nube.",
+        "job1.desc2": "Liderando la dirección técnica y mentoría de ingenieros como Tech Lead.",
+        "job1.desc3": "Gestionando relaciones con clientes y entrega como Account Manager en Improving Latam.",
+        "job2.role": "Ingeniero Full-Stack",
+        "job2.date": "2016 – 2018",
+        "job2.desc1": "Desarrollé aplicaciones web OTT y de streaming para grandes marcas de medios.",
+        "job2.desc2": "Clientes incluyeron Cartoon Network, TVN, Canal 13 y WinSports.",
+        "job2.desc3": "Entregué plataformas de video de alta disponibilidad con stacks React / Node / AWS.",
+        "job3.role": "Co-Fundador & CTO",
+        "job3.date": "Ene 2015 – Feb 2016",
+        "job3.desc1": "Co-fundé una startup de diseño, construcción y prototipado.",
+        "job3.desc2": "Gestioné infraestructura IT, operaciones y desarrollo de producto.",
+        "job3.desc3": "Reconocido por SERCOTEC Capital Semilla Emprende y Startup Weekend.",
+        "edu.degree": "Ingeniería Civil Informática",
+        "highlight.ada": "Accesibilidad & cumplimiento ADA — capacitado y aplicado en apps de producción",
+        "highlight.sercotec": "SERCOTEC Capital Semilla Emprende — beneficiario de capital semilla",
+        "highlight.sw": "Startup Weekend & The Hack Way — participante"
+      }
+    };
+
+    let currentLang = localStorage.getItem('lang') || 'en';
+
+    function setLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('lang', lang);
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.dataset.i18n;
+        if (translations[lang][key] !== undefined) el.textContent = translations[lang][key];
+      });
+      document.getElementById('lang-toggle').textContent = lang === 'en' ? 'ES' : 'EN';
+    }
+
+    function toggleLang() { setLang(currentLang === 'en' ? 'es' : 'en'); }
+
+    setLang(currentLang);
+  </script>
 </body>
 </html>
